@@ -1,11 +1,23 @@
 import React from "react";
 import { UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { initialProfile } from "@/lib/initial-profile";
+import { db } from "@/lib/db";
 
-export default function Home() {
+export default async function SetupApge() {
+  const profile = await initialProfile();
+
+  const polls = await db.poll.findFirst({
+    where: {
+      createdBy: profile.id,
+    },
+  });
+
   return (
-    <p className="font-bold text-indigo-500">
-      This is a protected Route
+    <>
+      <Button> Create poll</Button>
+
       <UserButton afterSignOutUrl="/" />
-    </p>
+    </>
   );
 }
