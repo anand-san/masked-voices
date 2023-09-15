@@ -6,7 +6,18 @@ html,
 body,
 :root {
   height: 100%;
+}
+
+.cl-internal-b3fm6y {
+  display: none;
+}
+
+.bg-beige {
   background: #faf0e6;
+}
+
+.bg-beige-dark {
+  background: #31525b;
 }
 
 @layer base {

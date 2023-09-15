@@ -3,6 +3,7 @@ import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { initialProfile } from "@/lib/initial-profile";
 import { db } from "@/lib/db";
+import { CreateTopicDialog } from "@/components/ui/modals/create-poll";
 
 export default async function SetupApge() {
   const profile = await initialProfile();
@@ -14,10 +15,9 @@ export default async function SetupApge() {
   });
 
   return (
-    <>
-      <Button> Create poll</Button>
-
+    <div>
+      <CreateTopicDialog />
       <UserButton afterSignOutUrl="/" />
-    </>
+    </div>
   );
 }
