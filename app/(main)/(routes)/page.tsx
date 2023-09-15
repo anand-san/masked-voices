@@ -1,6 +1,4 @@
 import React from "react";
-import { UserButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
 import { initialProfile } from "@/lib/initial-profile";
 import { db } from "@/lib/db";
 import { CreateTopicDialog } from "@/components/ui/modals/create-poll";
@@ -17,7 +15,6 @@ export default async function SetupApge() {
   return (
     <div>
       <CreateTopicDialog />
-      <UserButton afterSignOutUrl="/" />
     </div>
   );
 }
