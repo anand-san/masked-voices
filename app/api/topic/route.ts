@@ -7,7 +7,7 @@ const uid = new ShortUniqueId({ length: 5 });
 
 export async function POST(req: Request) {
   try {
-    const { topic, imageUrl, description } = await req.json();
+    const { topic, description } = await req.json();
     const profile = await currentProfile();
 
     if (!profile) {
