@@ -22,10 +22,10 @@ export const MenuBar = () => {
             {userId && (
               <>
                 <Link
-                  href="/editor"
+                  href="/topics"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
-                  Editor
+                  Dashboard
                 </Link>
               </>
             )}
