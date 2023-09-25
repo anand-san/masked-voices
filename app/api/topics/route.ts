@@ -40,19 +40,23 @@ export async function PUT(req: Request) {
       return new NextResponse("Unauthorized", { status: 400 });
     }
 
-    const createTopic = await db.topic.update({
+    const getTopic = await db.topic.findFirst({
       where: {
         id: topicId,
-      },
-      data: {
         createdBy: profile.id,
-        title: data.title,
-        content: data.content,
-        externalId: uid.rnd(),
-        published: false,
       },
     });
-    return NextResponse.json(createTopic);
+
+    const updateTopic = await db.topic.update({
+      where: {
+        id: getTopic?.id,
+      },
+      data: {
+        content: data.content,
+        published: data.published,
+      },
+    });
+    return NextResponse.json(getTopic);
   } catch (error) {
     console.log("TOPICS_POST", error);
     return new NextResponse("Internal Error", { status: 500 });

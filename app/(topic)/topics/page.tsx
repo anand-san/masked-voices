@@ -65,7 +65,7 @@ export default function Topics() {
           />
         </CardHeader>
         <CardDescription className="flex justify-around p-8">
-          <Button variant="outline" size="icon" onClick={createTopic}>
+          <Button variant="outline" size="lg" onClick={createTopic}>
             <PlusSquare className="h-4 w-4" />
           </Button>
         </CardDescription>
@@ -76,11 +76,11 @@ export default function Topics() {
             <CardTitle>{topic.title}</CardTitle>
           </CardHeader>
           <CardDescription className="flex justify-around p-8">
-            <div className="mr-8">
+            <div>
               <p>{topic.published ? "Published" : "Unpublished"}</p>
               <p>Edited {topic.updatedAt}</p>
             </div>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" className="ml-8">
               <Link href={"/topics/" + topic.externalId}>
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -90,6 +90,7 @@ export default function Topics() {
               variant="outline"
               size="icon"
               onClick={() => deleteTopic(topic.id)}
+              className="ml-2"
             >
               <Trash className="h-4 w-4" />
             </Button>
