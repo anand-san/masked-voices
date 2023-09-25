@@ -117,6 +117,26 @@ exports.Prisma.ProfileScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TopicScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  externalId: 'externalId',
+  published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy'
+};
+
+exports.Prisma.CommentsScalarFieldEnum = {
+  id: 'id',
+  topicId: 'topicId',
+  text: 'text',
+  votes: 'votes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.PollScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -141,9 +161,21 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   Profile: 'Profile',
+  Topic: 'Topic',
+  Comments: 'Comments',
   Poll: 'Poll',
   Question: 'Question'
 };

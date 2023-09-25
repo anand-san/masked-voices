@@ -19,6 +19,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
 /**
+ * Model Topic
+ * 
+ */
+export type Topic = $Result.DefaultSelection<Prisma.$TopicPayload>
+/**
+ * Model Comments
+ * 
+ */
+export type Comments = $Result.DefaultSelection<Prisma.$CommentsPayload>
+/**
  * Model Poll
  * 
  */
@@ -160,6 +170,26 @@ export class PrismaClient<
     * ```
     */
   get profile(): Prisma.ProfileDelegate<ExtArgs>;
+
+  /**
+   * `prisma.topic`: Exposes CRUD operations for the **Topic** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Topics
+    * const topics = await prisma.topic.findMany()
+    * ```
+    */
+  get topic(): Prisma.TopicDelegate<ExtArgs>;
+
+  /**
+   * `prisma.comments`: Exposes CRUD operations for the **Comments** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comments
+    * const comments = await prisma.comments.findMany()
+    * ```
+    */
+  get comments(): Prisma.CommentsDelegate<ExtArgs>;
 
   /**
    * `prisma.poll`: Exposes CRUD operations for the **Poll** model.
@@ -651,6 +681,8 @@ export namespace Prisma {
 
   export const ModelName: {
     Profile: 'Profile',
+    Topic: 'Topic',
+    Comments: 'Comments',
     Poll: 'Poll',
     Question: 'Question'
   };
@@ -669,7 +701,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'profile' | 'poll' | 'question'
+      modelProps: 'profile' | 'topic' | 'comments' | 'poll' | 'question'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -736,6 +768,138 @@ export namespace Prisma {
           count: {
             args: Prisma.ProfileCountArgs<ExtArgs>,
             result: $Utils.Optional<ProfileCountAggregateOutputType> | number
+          }
+        }
+      }
+      Topic: {
+        payload: Prisma.$TopicPayload<ExtArgs>
+        fields: Prisma.TopicFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TopicFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TopicFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          findFirst: {
+            args: Prisma.TopicFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TopicFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          findMany: {
+            args: Prisma.TopicFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>[]
+          }
+          create: {
+            args: Prisma.TopicCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          createMany: {
+            args: Prisma.TopicCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.TopicDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          update: {
+            args: Prisma.TopicUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          deleteMany: {
+            args: Prisma.TopicDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TopicUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.TopicUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TopicPayload>
+          }
+          aggregate: {
+            args: Prisma.TopicAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTopic>
+          }
+          groupBy: {
+            args: Prisma.TopicGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<TopicGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TopicCountArgs<ExtArgs>,
+            result: $Utils.Optional<TopicCountAggregateOutputType> | number
+          }
+        }
+      }
+      Comments: {
+        payload: Prisma.$CommentsPayload<ExtArgs>
+        fields: Prisma.CommentsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          findFirst: {
+            args: Prisma.CommentsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          findMany: {
+            args: Prisma.CommentsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>[]
+          }
+          create: {
+            args: Prisma.CommentsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          createMany: {
+            args: Prisma.CommentsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.CommentsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          update: {
+            args: Prisma.CommentsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.CommentsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+          }
+          aggregate: {
+            args: Prisma.CommentsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateComments>
+          }
+          groupBy: {
+            args: Prisma.CommentsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CommentsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentsCountArgs<ExtArgs>,
+            result: $Utils.Optional<CommentsCountAggregateOutputType> | number
           }
         }
       }
@@ -1025,10 +1189,12 @@ export namespace Prisma {
 
   export type ProfileCountOutputType = {
     polls: number
+    topics: number
   }
 
   export type ProfileCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     polls?: boolean | ProfileCountOutputTypeCountPollsArgs
+    topics?: boolean | ProfileCountOutputTypeCountTopicsArgs
   }
 
   // Custom InputTypes
@@ -1049,6 +1215,48 @@ export namespace Prisma {
    */
   export type ProfileCountOutputTypeCountPollsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: PollWhereInput
+  }
+
+
+  /**
+   * ProfileCountOutputType without action
+   */
+  export type ProfileCountOutputTypeCountTopicsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: TopicWhereInput
+  }
+
+
+
+  /**
+   * Count Type TopicCountOutputType
+   */
+
+  export type TopicCountOutputType = {
+    comments: number
+  }
+
+  export type TopicCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    comments?: boolean | TopicCountOutputTypeCountCommentsArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * TopicCountOutputType without action
+   */
+  export type TopicCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TopicCountOutputType
+     */
+    select?: TopicCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * TopicCountOutputType without action
+   */
+  export type TopicCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: CommentsWhereInput
   }
 
 
@@ -1272,6 +1480,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     polls?: boolean | Profile$pollsArgs<ExtArgs>
+    topics?: boolean | Profile$topicsArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
@@ -1287,6 +1496,7 @@ export namespace Prisma {
 
   export type ProfileInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     polls?: boolean | Profile$pollsArgs<ExtArgs>
+    topics?: boolean | Profile$topicsArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1295,6 +1505,7 @@ export namespace Prisma {
     name: "Profile"
     objects: {
       polls: Prisma.$PollPayload<ExtArgs>[]
+      topics: Prisma.$TopicPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
@@ -1671,6 +1882,8 @@ export namespace Prisma {
 
     polls<T extends Profile$pollsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$pollsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PollPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    topics<T extends Profile$topicsArgs<ExtArgs> = {}>(args?: Subset<T, Profile$topicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2039,6 +2252,27 @@ export namespace Prisma {
 
 
   /**
+   * Profile.topics
+   */
+  export type Profile$topicsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    where?: TopicWhereInput
+    orderBy?: TopicOrderByWithRelationInput | TopicOrderByWithRelationInput[]
+    cursor?: TopicWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TopicScalarFieldEnum | TopicScalarFieldEnum[]
+  }
+
+
+  /**
    * Profile without action
    */
   export type ProfileDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -2050,6 +2284,1944 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: ProfileInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Topic
+   */
+
+  export type AggregateTopic = {
+    _count: TopicCountAggregateOutputType | null
+    _min: TopicMinAggregateOutputType | null
+    _max: TopicMaxAggregateOutputType | null
+  }
+
+  export type TopicMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    externalId: string | null
+    published: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdBy: string | null
+  }
+
+  export type TopicMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    externalId: string | null
+    published: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdBy: string | null
+  }
+
+  export type TopicCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    externalId: number
+    published: number
+    createdAt: number
+    updatedAt: number
+    createdBy: number
+    _all: number
+  }
+
+
+  export type TopicMinAggregateInputType = {
+    id?: true
+    title?: true
+    externalId?: true
+    published?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+  }
+
+  export type TopicMaxAggregateInputType = {
+    id?: true
+    title?: true
+    externalId?: true
+    published?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+  }
+
+  export type TopicCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    externalId?: true
+    published?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+    _all?: true
+  }
+
+  export type TopicAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Topic to aggregate.
+     */
+    where?: TopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Topics to fetch.
+     */
+    orderBy?: TopicOrderByWithRelationInput | TopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Topics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Topics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Topics
+    **/
+    _count?: true | TopicCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TopicMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TopicMaxAggregateInputType
+  }
+
+  export type GetTopicAggregateType<T extends TopicAggregateArgs> = {
+        [P in keyof T & keyof AggregateTopic]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTopic[P]>
+      : GetScalarType<T[P], AggregateTopic[P]>
+  }
+
+
+
+
+  export type TopicGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: TopicWhereInput
+    orderBy?: TopicOrderByWithAggregationInput | TopicOrderByWithAggregationInput[]
+    by: TopicScalarFieldEnum[] | TopicScalarFieldEnum
+    having?: TopicScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TopicCountAggregateInputType | true
+    _min?: TopicMinAggregateInputType
+    _max?: TopicMaxAggregateInputType
+  }
+
+  export type TopicGroupByOutputType = {
+    id: string
+    title: string
+    content: JsonValue
+    externalId: string
+    published: boolean
+    createdAt: Date
+    updatedAt: Date
+    createdBy: string
+    _count: TopicCountAggregateOutputType | null
+    _min: TopicMinAggregateOutputType | null
+    _max: TopicMaxAggregateOutputType | null
+  }
+
+  type GetTopicGroupByPayload<T extends TopicGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TopicGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TopicGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TopicGroupByOutputType[P]>
+            : GetScalarType<T[P], TopicGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TopicSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    externalId?: boolean
+    published?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean
+    comments?: boolean | Topic$commentsArgs<ExtArgs>
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+    _count?: boolean | TopicCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["topic"]>
+
+  export type TopicSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    externalId?: boolean
+    published?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean
+  }
+
+  export type TopicInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    comments?: boolean | Topic$commentsArgs<ExtArgs>
+    profile?: boolean | ProfileDefaultArgs<ExtArgs>
+    _count?: boolean | TopicCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $TopicPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "Topic"
+    objects: {
+      comments: Prisma.$CommentsPayload<ExtArgs>[]
+      profile: Prisma.$ProfilePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetResult<{
+      id: string
+      title: string
+      content: Prisma.JsonValue
+      externalId: string
+      published: boolean
+      createdAt: Date
+      updatedAt: Date
+      createdBy: string
+    }, ExtArgs["result"]["topic"]>
+    composites: {}
+  }
+
+
+  type TopicGetPayload<S extends boolean | null | undefined | TopicDefaultArgs> = $Result.GetResult<Prisma.$TopicPayload, S>
+
+  type TopicCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<TopicFindManyArgs, 'select' | 'include'> & {
+      select?: TopicCountAggregateInputType | true
+    }
+
+  export interface TopicDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Topic'], meta: { name: 'Topic' } }
+    /**
+     * Find zero or one Topic that matches the filter.
+     * @param {TopicFindUniqueArgs} args - Arguments to find a Topic
+     * @example
+     * // Get one Topic
+     * const topic = await prisma.topic.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends TopicFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicFindUniqueArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Topic that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {TopicFindUniqueOrThrowArgs} args - Arguments to find a Topic
+     * @example
+     * // Get one Topic
+     * const topic = await prisma.topic.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends TopicFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Topic that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicFindFirstArgs} args - Arguments to find a Topic
+     * @example
+     * // Get one Topic
+     * const topic = await prisma.topic.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends TopicFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicFindFirstArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Topic that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicFindFirstOrThrowArgs} args - Arguments to find a Topic
+     * @example
+     * // Get one Topic
+     * const topic = await prisma.topic.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends TopicFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Topics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Topics
+     * const topics = await prisma.topic.findMany()
+     * 
+     * // Get first 10 Topics
+     * const topics = await prisma.topic.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const topicWithIdOnly = await prisma.topic.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends TopicFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Topic.
+     * @param {TopicCreateArgs} args - Arguments to create a Topic.
+     * @example
+     * // Create one Topic
+     * const Topic = await prisma.topic.create({
+     *   data: {
+     *     // ... data to create a Topic
+     *   }
+     * })
+     * 
+    **/
+    create<T extends TopicCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicCreateArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Topics.
+     *     @param {TopicCreateManyArgs} args - Arguments to create many Topics.
+     *     @example
+     *     // Create many Topics
+     *     const topic = await prisma.topic.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends TopicCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Topic.
+     * @param {TopicDeleteArgs} args - Arguments to delete one Topic.
+     * @example
+     * // Delete one Topic
+     * const Topic = await prisma.topic.delete({
+     *   where: {
+     *     // ... filter to delete one Topic
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends TopicDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicDeleteArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Topic.
+     * @param {TopicUpdateArgs} args - Arguments to update one Topic.
+     * @example
+     * // Update one Topic
+     * const topic = await prisma.topic.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends TopicUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicUpdateArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Topics.
+     * @param {TopicDeleteManyArgs} args - Arguments to filter Topics to delete.
+     * @example
+     * // Delete a few Topics
+     * const { count } = await prisma.topic.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends TopicDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TopicDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Topics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Topics
+     * const topic = await prisma.topic.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends TopicUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Topic.
+     * @param {TopicUpsertArgs} args - Arguments to update or create a Topic.
+     * @example
+     * // Update or create a Topic
+     * const topic = await prisma.topic.upsert({
+     *   create: {
+     *     // ... data to create a Topic
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Topic we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends TopicUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, TopicUpsertArgs<ExtArgs>>
+    ): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Topics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicCountArgs} args - Arguments to filter Topics to count.
+     * @example
+     * // Count the number of Topics
+     * const count = await prisma.topic.count({
+     *   where: {
+     *     // ... the filter for the Topics we want to count
+     *   }
+     * })
+    **/
+    count<T extends TopicCountArgs>(
+      args?: Subset<T, TopicCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TopicCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Topic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TopicAggregateArgs>(args: Subset<T, TopicAggregateArgs>): Prisma.PrismaPromise<GetTopicAggregateType<T>>
+
+    /**
+     * Group by Topic.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TopicGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TopicGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TopicGroupByArgs['orderBy'] }
+        : { orderBy?: TopicGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TopicGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTopicGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Topic model
+   */
+  readonly fields: TopicFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Topic.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TopicClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    comments<T extends Topic$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Topic$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    profile<T extends ProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfileDefaultArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Topic model
+   */ 
+  interface TopicFieldRefs {
+    readonly id: FieldRef<"Topic", 'String'>
+    readonly title: FieldRef<"Topic", 'String'>
+    readonly content: FieldRef<"Topic", 'Json'>
+    readonly externalId: FieldRef<"Topic", 'String'>
+    readonly published: FieldRef<"Topic", 'Boolean'>
+    readonly createdAt: FieldRef<"Topic", 'DateTime'>
+    readonly updatedAt: FieldRef<"Topic", 'DateTime'>
+    readonly createdBy: FieldRef<"Topic", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Topic findUnique
+   */
+  export type TopicFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter, which Topic to fetch.
+     */
+    where: TopicWhereUniqueInput
+  }
+
+
+  /**
+   * Topic findUniqueOrThrow
+   */
+  export type TopicFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter, which Topic to fetch.
+     */
+    where: TopicWhereUniqueInput
+  }
+
+
+  /**
+   * Topic findFirst
+   */
+  export type TopicFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter, which Topic to fetch.
+     */
+    where?: TopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Topics to fetch.
+     */
+    orderBy?: TopicOrderByWithRelationInput | TopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Topics.
+     */
+    cursor?: TopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Topics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Topics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Topics.
+     */
+    distinct?: TopicScalarFieldEnum | TopicScalarFieldEnum[]
+  }
+
+
+  /**
+   * Topic findFirstOrThrow
+   */
+  export type TopicFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter, which Topic to fetch.
+     */
+    where?: TopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Topics to fetch.
+     */
+    orderBy?: TopicOrderByWithRelationInput | TopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Topics.
+     */
+    cursor?: TopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Topics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Topics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Topics.
+     */
+    distinct?: TopicScalarFieldEnum | TopicScalarFieldEnum[]
+  }
+
+
+  /**
+   * Topic findMany
+   */
+  export type TopicFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter, which Topics to fetch.
+     */
+    where?: TopicWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Topics to fetch.
+     */
+    orderBy?: TopicOrderByWithRelationInput | TopicOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Topics.
+     */
+    cursor?: TopicWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Topics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Topics.
+     */
+    skip?: number
+    distinct?: TopicScalarFieldEnum | TopicScalarFieldEnum[]
+  }
+
+
+  /**
+   * Topic create
+   */
+  export type TopicCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Topic.
+     */
+    data: XOR<TopicCreateInput, TopicUncheckedCreateInput>
+  }
+
+
+  /**
+   * Topic createMany
+   */
+  export type TopicCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Topics.
+     */
+    data: TopicCreateManyInput | TopicCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Topic update
+   */
+  export type TopicUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Topic.
+     */
+    data: XOR<TopicUpdateInput, TopicUncheckedUpdateInput>
+    /**
+     * Choose, which Topic to update.
+     */
+    where: TopicWhereUniqueInput
+  }
+
+
+  /**
+   * Topic updateMany
+   */
+  export type TopicUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Topics.
+     */
+    data: XOR<TopicUpdateManyMutationInput, TopicUncheckedUpdateManyInput>
+    /**
+     * Filter which Topics to update
+     */
+    where?: TopicWhereInput
+  }
+
+
+  /**
+   * Topic upsert
+   */
+  export type TopicUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Topic to update in case it exists.
+     */
+    where: TopicWhereUniqueInput
+    /**
+     * In case the Topic found by the `where` argument doesn't exist, create a new Topic with this data.
+     */
+    create: XOR<TopicCreateInput, TopicUncheckedCreateInput>
+    /**
+     * In case the Topic was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TopicUpdateInput, TopicUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Topic delete
+   */
+  export type TopicDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+    /**
+     * Filter which Topic to delete.
+     */
+    where: TopicWhereUniqueInput
+  }
+
+
+  /**
+   * Topic deleteMany
+   */
+  export type TopicDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Topics to delete
+     */
+    where?: TopicWhereInput
+  }
+
+
+  /**
+   * Topic.comments
+   */
+  export type Topic$commentsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    where?: CommentsWhereInput
+    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    cursor?: CommentsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Topic without action
+   */
+  export type TopicDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Topic
+     */
+    select?: TopicSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TopicInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Comments
+   */
+
+  export type AggregateComments = {
+    _count: CommentsCountAggregateOutputType | null
+    _avg: CommentsAvgAggregateOutputType | null
+    _sum: CommentsSumAggregateOutputType | null
+    _min: CommentsMinAggregateOutputType | null
+    _max: CommentsMaxAggregateOutputType | null
+  }
+
+  export type CommentsAvgAggregateOutputType = {
+    votes: number | null
+  }
+
+  export type CommentsSumAggregateOutputType = {
+    votes: number | null
+  }
+
+  export type CommentsMinAggregateOutputType = {
+    id: string | null
+    topicId: string | null
+    text: string | null
+    votes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentsMaxAggregateOutputType = {
+    id: string | null
+    topicId: string | null
+    text: string | null
+    votes: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CommentsCountAggregateOutputType = {
+    id: number
+    topicId: number
+    text: number
+    votes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CommentsAvgAggregateInputType = {
+    votes?: true
+  }
+
+  export type CommentsSumAggregateInputType = {
+    votes?: true
+  }
+
+  export type CommentsMinAggregateInputType = {
+    id?: true
+    topicId?: true
+    text?: true
+    votes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentsMaxAggregateInputType = {
+    id?: true
+    topicId?: true
+    text?: true
+    votes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CommentsCountAggregateInputType = {
+    id?: true
+    topicId?: true
+    text?: true
+    votes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CommentsAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comments to aggregate.
+     */
+    where?: CommentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comments
+    **/
+    _count?: true | CommentsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommentsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommentsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentsMaxAggregateInputType
+  }
+
+  export type GetCommentsAggregateType<T extends CommentsAggregateArgs> = {
+        [P in keyof T & keyof AggregateComments]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComments[P]>
+      : GetScalarType<T[P], AggregateComments[P]>
+  }
+
+
+
+
+  export type CommentsGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: CommentsWhereInput
+    orderBy?: CommentsOrderByWithAggregationInput | CommentsOrderByWithAggregationInput[]
+    by: CommentsScalarFieldEnum[] | CommentsScalarFieldEnum
+    having?: CommentsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentsCountAggregateInputType | true
+    _avg?: CommentsAvgAggregateInputType
+    _sum?: CommentsSumAggregateInputType
+    _min?: CommentsMinAggregateInputType
+    _max?: CommentsMaxAggregateInputType
+  }
+
+  export type CommentsGroupByOutputType = {
+    id: string
+    topicId: string
+    text: string
+    votes: number
+    createdAt: Date
+    updatedAt: Date
+    _count: CommentsCountAggregateOutputType | null
+    _avg: CommentsAvgAggregateOutputType | null
+    _sum: CommentsSumAggregateOutputType | null
+    _min: CommentsMinAggregateOutputType | null
+    _max: CommentsMaxAggregateOutputType | null
+  }
+
+  type GetCommentsGroupByPayload<T extends CommentsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentsGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentsSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    topicId?: boolean
+    text?: boolean
+    votes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    topic?: boolean | TopicDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comments"]>
+
+  export type CommentsSelectScalar = {
+    id?: boolean
+    topicId?: boolean
+    text?: boolean
+    votes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CommentsInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    topic?: boolean | TopicDefaultArgs<ExtArgs>
+  }
+
+
+  export type $CommentsPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "Comments"
+    objects: {
+      topic: Prisma.$TopicPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetResult<{
+      id: string
+      topicId: string
+      text: string
+      votes: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["comments"]>
+    composites: {}
+  }
+
+
+  type CommentsGetPayload<S extends boolean | null | undefined | CommentsDefaultArgs> = $Result.GetResult<Prisma.$CommentsPayload, S>
+
+  type CommentsCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<CommentsFindManyArgs, 'select' | 'include'> & {
+      select?: CommentsCountAggregateInputType | true
+    }
+
+  export interface CommentsDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comments'], meta: { name: 'Comments' } }
+    /**
+     * Find zero or one Comments that matches the filter.
+     * @param {CommentsFindUniqueArgs} args - Arguments to find a Comments
+     * @example
+     * // Get one Comments
+     * const comments = await prisma.comments.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends CommentsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsFindUniqueArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Comments that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {CommentsFindUniqueOrThrowArgs} args - Arguments to find a Comments
+     * @example
+     * // Get one Comments
+     * const comments = await prisma.comments.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends CommentsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Comments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsFindFirstArgs} args - Arguments to find a Comments
+     * @example
+     * // Get one Comments
+     * const comments = await prisma.comments.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends CommentsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsFindFirstArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Comments that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsFindFirstOrThrowArgs} args - Arguments to find a Comments
+     * @example
+     * // Get one Comments
+     * const comments = await prisma.comments.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends CommentsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Comments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comments
+     * const comments = await prisma.comments.findMany()
+     * 
+     * // Get first 10 Comments
+     * const comments = await prisma.comments.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentsWithIdOnly = await prisma.comments.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends CommentsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Comments.
+     * @param {CommentsCreateArgs} args - Arguments to create a Comments.
+     * @example
+     * // Create one Comments
+     * const Comments = await prisma.comments.create({
+     *   data: {
+     *     // ... data to create a Comments
+     *   }
+     * })
+     * 
+    **/
+    create<T extends CommentsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsCreateArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Comments.
+     *     @param {CommentsCreateManyArgs} args - Arguments to create many Comments.
+     *     @example
+     *     // Create many Comments
+     *     const comments = await prisma.comments.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends CommentsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Comments.
+     * @param {CommentsDeleteArgs} args - Arguments to delete one Comments.
+     * @example
+     * // Delete one Comments
+     * const Comments = await prisma.comments.delete({
+     *   where: {
+     *     // ... filter to delete one Comments
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends CommentsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsDeleteArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Comments.
+     * @param {CommentsUpdateArgs} args - Arguments to update one Comments.
+     * @example
+     * // Update one Comments
+     * const comments = await prisma.comments.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends CommentsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsUpdateArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Comments.
+     * @param {CommentsDeleteManyArgs} args - Arguments to filter Comments to delete.
+     * @example
+     * // Delete a few Comments
+     * const { count } = await prisma.comments.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends CommentsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CommentsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comments
+     * const comments = await prisma.comments.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends CommentsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Comments.
+     * @param {CommentsUpsertArgs} args - Arguments to update or create a Comments.
+     * @example
+     * // Update or create a Comments
+     * const comments = await prisma.comments.upsert({
+     *   create: {
+     *     // ... data to create a Comments
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comments we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends CommentsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CommentsUpsertArgs<ExtArgs>>
+    ): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsCountArgs} args - Arguments to filter Comments to count.
+     * @example
+     * // Count the number of Comments
+     * const count = await prisma.comments.count({
+     *   where: {
+     *     // ... the filter for the Comments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentsCountArgs>(
+      args?: Subset<T, CommentsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentsAggregateArgs>(args: Subset<T, CommentsAggregateArgs>): Prisma.PrismaPromise<GetCommentsAggregateType<T>>
+
+    /**
+     * Group by Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentsGroupByArgs['orderBy'] }
+        : { orderBy?: CommentsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comments model
+   */
+  readonly fields: CommentsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comments.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentsClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    topic<T extends TopicDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TopicDefaultArgs<ExtArgs>>): Prisma__TopicClient<$Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Comments model
+   */ 
+  interface CommentsFieldRefs {
+    readonly id: FieldRef<"Comments", 'String'>
+    readonly topicId: FieldRef<"Comments", 'String'>
+    readonly text: FieldRef<"Comments", 'String'>
+    readonly votes: FieldRef<"Comments", 'Int'>
+    readonly createdAt: FieldRef<"Comments", 'DateTime'>
+    readonly updatedAt: FieldRef<"Comments", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Comments findUnique
+   */
+  export type CommentsFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where: CommentsWhereUniqueInput
+  }
+
+
+  /**
+   * Comments findUniqueOrThrow
+   */
+  export type CommentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where: CommentsWhereUniqueInput
+  }
+
+
+  /**
+   * Comments findFirst
+   */
+  export type CommentsFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where?: CommentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Comments findFirstOrThrow
+   */
+  export type CommentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where?: CommentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Comments findMany
+   */
+  export type CommentsFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where?: CommentsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comments.
+     */
+    cursor?: CommentsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Comments create
+   */
+  export type CommentsCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comments.
+     */
+    data: XOR<CommentsCreateInput, CommentsUncheckedCreateInput>
+  }
+
+
+  /**
+   * Comments createMany
+   */
+  export type CommentsCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentsCreateManyInput | CommentsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Comments update
+   */
+  export type CommentsUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comments.
+     */
+    data: XOR<CommentsUpdateInput, CommentsUncheckedUpdateInput>
+    /**
+     * Choose, which Comments to update.
+     */
+    where: CommentsWhereUniqueInput
+  }
+
+
+  /**
+   * Comments updateMany
+   */
+  export type CommentsUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentsUpdateManyMutationInput, CommentsUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentsWhereInput
+  }
+
+
+  /**
+   * Comments upsert
+   */
+  export type CommentsUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comments to update in case it exists.
+     */
+    where: CommentsWhereUniqueInput
+    /**
+     * In case the Comments found by the `where` argument doesn't exist, create a new Comments with this data.
+     */
+    create: XOR<CommentsCreateInput, CommentsUncheckedCreateInput>
+    /**
+     * In case the Comments was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentsUpdateInput, CommentsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Comments delete
+   */
+  export type CommentsDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
+    /**
+     * Filter which Comments to delete.
+     */
+    where: CommentsWhereUniqueInput
+  }
+
+
+  /**
+   * Comments deleteMany
+   */
+  export type CommentsDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comments to delete
+     */
+    where?: CommentsWhereInput
+  }
+
+
+  /**
+   * Comments without action
+   */
+  export type CommentsDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comments
+     */
+    select?: CommentsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: CommentsInclude<ExtArgs> | null
   }
 
 
@@ -4012,6 +6184,32 @@ export namespace Prisma {
   export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
 
 
+  export const TopicScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    externalId: 'externalId',
+    published: 'published',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    createdBy: 'createdBy'
+  };
+
+  export type TopicScalarFieldEnum = (typeof TopicScalarFieldEnum)[keyof typeof TopicScalarFieldEnum]
+
+
+  export const CommentsScalarFieldEnum: {
+    id: 'id',
+    topicId: 'topicId',
+    text: 'text',
+    votes: 'votes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CommentsScalarFieldEnum = (typeof CommentsScalarFieldEnum)[keyof typeof CommentsScalarFieldEnum]
+
+
   export const PollScalarFieldEnum: {
     id: 'id',
     title: 'title',
@@ -4045,6 +6243,22 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
   /**
    * Field references 
    */
@@ -4061,6 +6275,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4093,6 +6321,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
     polls?: PollListRelationFilter
+    topics?: TopicListRelationFilter
   }
 
   export type ProfileOrderByWithRelationInput = {
@@ -4104,6 +6333,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     polls?: PollOrderByRelationAggregateInput
+    topics?: TopicOrderByRelationAggregateInput
   }
 
   export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -4118,6 +6348,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
     polls?: PollListRelationFilter
+    topics?: TopicListRelationFilter
   }, "id" | "userId">
 
   export type ProfileOrderByWithAggregationInput = {
@@ -4144,6 +6375,141 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Profile"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
+  }
+
+  export type TopicWhereInput = {
+    AND?: TopicWhereInput | TopicWhereInput[]
+    OR?: TopicWhereInput[]
+    NOT?: TopicWhereInput | TopicWhereInput[]
+    id?: StringFilter<"Topic"> | string
+    title?: StringFilter<"Topic"> | string
+    content?: JsonFilter<"Topic">
+    externalId?: StringFilter<"Topic"> | string
+    published?: BoolFilter<"Topic"> | boolean
+    createdAt?: DateTimeFilter<"Topic"> | Date | string
+    updatedAt?: DateTimeFilter<"Topic"> | Date | string
+    createdBy?: StringFilter<"Topic"> | string
+    comments?: CommentsListRelationFilter
+    profile?: XOR<ProfileRelationFilter, ProfileWhereInput>
+  }
+
+  export type TopicOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    externalId?: SortOrder
+    published?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+    comments?: CommentsOrderByRelationAggregateInput
+    profile?: ProfileOrderByWithRelationInput
+  }
+
+  export type TopicWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TopicWhereInput | TopicWhereInput[]
+    OR?: TopicWhereInput[]
+    NOT?: TopicWhereInput | TopicWhereInput[]
+    title?: StringFilter<"Topic"> | string
+    content?: JsonFilter<"Topic">
+    externalId?: StringFilter<"Topic"> | string
+    published?: BoolFilter<"Topic"> | boolean
+    createdAt?: DateTimeFilter<"Topic"> | Date | string
+    updatedAt?: DateTimeFilter<"Topic"> | Date | string
+    createdBy?: StringFilter<"Topic"> | string
+    comments?: CommentsListRelationFilter
+    profile?: XOR<ProfileRelationFilter, ProfileWhereInput>
+  }, "id">
+
+  export type TopicOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    externalId?: SortOrder
+    published?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+    _count?: TopicCountOrderByAggregateInput
+    _max?: TopicMaxOrderByAggregateInput
+    _min?: TopicMinOrderByAggregateInput
+  }
+
+  export type TopicScalarWhereWithAggregatesInput = {
+    AND?: TopicScalarWhereWithAggregatesInput | TopicScalarWhereWithAggregatesInput[]
+    OR?: TopicScalarWhereWithAggregatesInput[]
+    NOT?: TopicScalarWhereWithAggregatesInput | TopicScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Topic"> | string
+    title?: StringWithAggregatesFilter<"Topic"> | string
+    content?: JsonWithAggregatesFilter<"Topic">
+    externalId?: StringWithAggregatesFilter<"Topic"> | string
+    published?: BoolWithAggregatesFilter<"Topic"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Topic"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Topic"> | Date | string
+    createdBy?: StringWithAggregatesFilter<"Topic"> | string
+  }
+
+  export type CommentsWhereInput = {
+    AND?: CommentsWhereInput | CommentsWhereInput[]
+    OR?: CommentsWhereInput[]
+    NOT?: CommentsWhereInput | CommentsWhereInput[]
+    id?: StringFilter<"Comments"> | string
+    topicId?: StringFilter<"Comments"> | string
+    text?: StringFilter<"Comments"> | string
+    votes?: IntFilter<"Comments"> | number
+    createdAt?: DateTimeFilter<"Comments"> | Date | string
+    updatedAt?: DateTimeFilter<"Comments"> | Date | string
+    topic?: XOR<TopicRelationFilter, TopicWhereInput>
+  }
+
+  export type CommentsOrderByWithRelationInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    text?: SortOrder
+    votes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    topic?: TopicOrderByWithRelationInput
+  }
+
+  export type CommentsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommentsWhereInput | CommentsWhereInput[]
+    OR?: CommentsWhereInput[]
+    NOT?: CommentsWhereInput | CommentsWhereInput[]
+    topicId?: StringFilter<"Comments"> | string
+    text?: StringFilter<"Comments"> | string
+    votes?: IntFilter<"Comments"> | number
+    createdAt?: DateTimeFilter<"Comments"> | Date | string
+    updatedAt?: DateTimeFilter<"Comments"> | Date | string
+    topic?: XOR<TopicRelationFilter, TopicWhereInput>
+  }, "id">
+
+  export type CommentsOrderByWithAggregationInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    text?: SortOrder
+    votes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CommentsCountOrderByAggregateInput
+    _avg?: CommentsAvgOrderByAggregateInput
+    _max?: CommentsMaxOrderByAggregateInput
+    _min?: CommentsMinOrderByAggregateInput
+    _sum?: CommentsSumOrderByAggregateInput
+  }
+
+  export type CommentsScalarWhereWithAggregatesInput = {
+    AND?: CommentsScalarWhereWithAggregatesInput | CommentsScalarWhereWithAggregatesInput[]
+    OR?: CommentsScalarWhereWithAggregatesInput[]
+    NOT?: CommentsScalarWhereWithAggregatesInput | CommentsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comments"> | string
+    topicId?: StringWithAggregatesFilter<"Comments"> | string
+    text?: StringWithAggregatesFilter<"Comments"> | string
+    votes?: IntWithAggregatesFilter<"Comments"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Comments"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Comments"> | Date | string
   }
 
   export type PollWhereInput = {
@@ -4285,6 +6651,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     polls?: PollCreateNestedManyWithoutProfileInput
+    topics?: TopicCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
@@ -4296,6 +6663,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     polls?: PollUncheckedCreateNestedManyWithoutProfileInput
+    topics?: TopicUncheckedCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUpdateInput = {
@@ -4307,6 +6675,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     polls?: PollUpdateManyWithoutProfileNestedInput
+    topics?: TopicUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
@@ -4318,6 +6687,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     polls?: PollUncheckedUpdateManyWithoutProfileNestedInput
+    topics?: TopicUncheckedUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileCreateManyInput = {
@@ -4346,6 +6716,148 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TopicCreateInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentsCreateNestedManyWithoutTopicInput
+    profile: ProfileCreateNestedOneWithoutTopicsInput
+  }
+
+  export type TopicUncheckedCreateInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy: string
+    comments?: CommentsUncheckedCreateNestedManyWithoutTopicInput
+  }
+
+  export type TopicUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentsUpdateManyWithoutTopicNestedInput
+    profile?: ProfileUpdateOneRequiredWithoutTopicsNestedInput
+  }
+
+  export type TopicUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: StringFieldUpdateOperationsInput | string
+    comments?: CommentsUncheckedUpdateManyWithoutTopicNestedInput
+  }
+
+  export type TopicCreateManyInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy: string
+  }
+
+  export type TopicUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TopicUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentsCreateInput = {
+    id?: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    topic: TopicCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentsUncheckedCreateInput = {
+    id?: string
+    topicId: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    topic?: TopicUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    topicId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentsCreateManyInput = {
+    id?: string
+    topicId: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    topicId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4516,7 +7028,17 @@ export namespace Prisma {
     none?: PollWhereInput
   }
 
+  export type TopicListRelationFilter = {
+    every?: TopicWhereInput
+    some?: TopicWhereInput
+    none?: TopicWhereInput
+  }
+
   export type PollOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TopicOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -4580,16 +7102,184 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type QuestionListRelationFilter = {
-    every?: QuestionWhereInput
-    some?: QuestionWhereInput
-    none?: QuestionWhereInput
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type CommentsListRelationFilter = {
+    every?: CommentsWhereInput
+    some?: CommentsWhereInput
+    none?: CommentsWhereInput
   }
 
   export type ProfileRelationFilter = {
     is?: ProfileWhereInput
     isNot?: ProfileWhereInput
+  }
+
+  export type CommentsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TopicCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    externalId?: SortOrder
+    published?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+  }
+
+  export type TopicMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    externalId?: SortOrder
+    published?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+  }
+
+  export type TopicMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    externalId?: SortOrder
+    published?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type TopicRelationFilter = {
+    is?: TopicWhereInput
+    isNot?: TopicWhereInput
+  }
+
+  export type CommentsCountOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    text?: SortOrder
+    votes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentsAvgOrderByAggregateInput = {
+    votes?: SortOrder
+  }
+
+  export type CommentsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    text?: SortOrder
+    votes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentsMinOrderByAggregateInput = {
+    id?: SortOrder
+    topicId?: SortOrder
+    text?: SortOrder
+    votes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CommentsSumOrderByAggregateInput = {
+    votes?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type QuestionListRelationFilter = {
+    every?: QuestionWhereInput
+    some?: QuestionWhereInput
+    none?: QuestionWhereInput
   }
 
   export type QuestionOrderByRelationAggregateInput = {
@@ -4624,17 +7314,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     createdBy?: SortOrder
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type PollRelationFilter = {
@@ -4677,22 +7356,6 @@ export namespace Prisma {
     votes?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type PollCreateNestedManyWithoutProfileInput = {
     create?: XOR<PollCreateWithoutProfileInput, PollUncheckedCreateWithoutProfileInput> | PollCreateWithoutProfileInput[] | PollUncheckedCreateWithoutProfileInput[]
     connectOrCreate?: PollCreateOrConnectWithoutProfileInput | PollCreateOrConnectWithoutProfileInput[]
@@ -4700,11 +7363,25 @@ export namespace Prisma {
     connect?: PollWhereUniqueInput | PollWhereUniqueInput[]
   }
 
+  export type TopicCreateNestedManyWithoutProfileInput = {
+    create?: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput> | TopicCreateWithoutProfileInput[] | TopicUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: TopicCreateOrConnectWithoutProfileInput | TopicCreateOrConnectWithoutProfileInput[]
+    createMany?: TopicCreateManyProfileInputEnvelope
+    connect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+  }
+
   export type PollUncheckedCreateNestedManyWithoutProfileInput = {
     create?: XOR<PollCreateWithoutProfileInput, PollUncheckedCreateWithoutProfileInput> | PollCreateWithoutProfileInput[] | PollUncheckedCreateWithoutProfileInput[]
     connectOrCreate?: PollCreateOrConnectWithoutProfileInput | PollCreateOrConnectWithoutProfileInput[]
     createMany?: PollCreateManyProfileInputEnvelope
     connect?: PollWhereUniqueInput | PollWhereUniqueInput[]
+  }
+
+  export type TopicUncheckedCreateNestedManyWithoutProfileInput = {
+    create?: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput> | TopicCreateWithoutProfileInput[] | TopicUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: TopicCreateOrConnectWithoutProfileInput | TopicCreateOrConnectWithoutProfileInput[]
+    createMany?: TopicCreateManyProfileInputEnvelope
+    connect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -4729,6 +7406,20 @@ export namespace Prisma {
     deleteMany?: PollScalarWhereInput | PollScalarWhereInput[]
   }
 
+  export type TopicUpdateManyWithoutProfileNestedInput = {
+    create?: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput> | TopicCreateWithoutProfileInput[] | TopicUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: TopicCreateOrConnectWithoutProfileInput | TopicCreateOrConnectWithoutProfileInput[]
+    upsert?: TopicUpsertWithWhereUniqueWithoutProfileInput | TopicUpsertWithWhereUniqueWithoutProfileInput[]
+    createMany?: TopicCreateManyProfileInputEnvelope
+    set?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    disconnect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    delete?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    connect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    update?: TopicUpdateWithWhereUniqueWithoutProfileInput | TopicUpdateWithWhereUniqueWithoutProfileInput[]
+    updateMany?: TopicUpdateManyWithWhereWithoutProfileInput | TopicUpdateManyWithWhereWithoutProfileInput[]
+    deleteMany?: TopicScalarWhereInput | TopicScalarWhereInput[]
+  }
+
   export type PollUncheckedUpdateManyWithoutProfileNestedInput = {
     create?: XOR<PollCreateWithoutProfileInput, PollUncheckedCreateWithoutProfileInput> | PollCreateWithoutProfileInput[] | PollUncheckedCreateWithoutProfileInput[]
     connectOrCreate?: PollCreateOrConnectWithoutProfileInput | PollCreateOrConnectWithoutProfileInput[]
@@ -4741,6 +7432,102 @@ export namespace Prisma {
     update?: PollUpdateWithWhereUniqueWithoutProfileInput | PollUpdateWithWhereUniqueWithoutProfileInput[]
     updateMany?: PollUpdateManyWithWhereWithoutProfileInput | PollUpdateManyWithWhereWithoutProfileInput[]
     deleteMany?: PollScalarWhereInput | PollScalarWhereInput[]
+  }
+
+  export type TopicUncheckedUpdateManyWithoutProfileNestedInput = {
+    create?: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput> | TopicCreateWithoutProfileInput[] | TopicUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: TopicCreateOrConnectWithoutProfileInput | TopicCreateOrConnectWithoutProfileInput[]
+    upsert?: TopicUpsertWithWhereUniqueWithoutProfileInput | TopicUpsertWithWhereUniqueWithoutProfileInput[]
+    createMany?: TopicCreateManyProfileInputEnvelope
+    set?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    disconnect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    delete?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    connect?: TopicWhereUniqueInput | TopicWhereUniqueInput[]
+    update?: TopicUpdateWithWhereUniqueWithoutProfileInput | TopicUpdateWithWhereUniqueWithoutProfileInput[]
+    updateMany?: TopicUpdateManyWithWhereWithoutProfileInput | TopicUpdateManyWithWhereWithoutProfileInput[]
+    deleteMany?: TopicScalarWhereInput | TopicScalarWhereInput[]
+  }
+
+  export type CommentsCreateNestedManyWithoutTopicInput = {
+    create?: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput> | CommentsCreateWithoutTopicInput[] | CommentsUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: CommentsCreateOrConnectWithoutTopicInput | CommentsCreateOrConnectWithoutTopicInput[]
+    createMany?: CommentsCreateManyTopicInputEnvelope
+    connect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+  }
+
+  export type ProfileCreateNestedOneWithoutTopicsInput = {
+    create?: XOR<ProfileCreateWithoutTopicsInput, ProfileUncheckedCreateWithoutTopicsInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutTopicsInput
+    connect?: ProfileWhereUniqueInput
+  }
+
+  export type CommentsUncheckedCreateNestedManyWithoutTopicInput = {
+    create?: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput> | CommentsCreateWithoutTopicInput[] | CommentsUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: CommentsCreateOrConnectWithoutTopicInput | CommentsCreateOrConnectWithoutTopicInput[]
+    createMany?: CommentsCreateManyTopicInputEnvelope
+    connect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type CommentsUpdateManyWithoutTopicNestedInput = {
+    create?: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput> | CommentsCreateWithoutTopicInput[] | CommentsUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: CommentsCreateOrConnectWithoutTopicInput | CommentsCreateOrConnectWithoutTopicInput[]
+    upsert?: CommentsUpsertWithWhereUniqueWithoutTopicInput | CommentsUpsertWithWhereUniqueWithoutTopicInput[]
+    createMany?: CommentsCreateManyTopicInputEnvelope
+    set?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    disconnect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    delete?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    connect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    update?: CommentsUpdateWithWhereUniqueWithoutTopicInput | CommentsUpdateWithWhereUniqueWithoutTopicInput[]
+    updateMany?: CommentsUpdateManyWithWhereWithoutTopicInput | CommentsUpdateManyWithWhereWithoutTopicInput[]
+    deleteMany?: CommentsScalarWhereInput | CommentsScalarWhereInput[]
+  }
+
+  export type ProfileUpdateOneRequiredWithoutTopicsNestedInput = {
+    create?: XOR<ProfileCreateWithoutTopicsInput, ProfileUncheckedCreateWithoutTopicsInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutTopicsInput
+    upsert?: ProfileUpsertWithoutTopicsInput
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutTopicsInput, ProfileUpdateWithoutTopicsInput>, ProfileUncheckedUpdateWithoutTopicsInput>
+  }
+
+  export type CommentsUncheckedUpdateManyWithoutTopicNestedInput = {
+    create?: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput> | CommentsCreateWithoutTopicInput[] | CommentsUncheckedCreateWithoutTopicInput[]
+    connectOrCreate?: CommentsCreateOrConnectWithoutTopicInput | CommentsCreateOrConnectWithoutTopicInput[]
+    upsert?: CommentsUpsertWithWhereUniqueWithoutTopicInput | CommentsUpsertWithWhereUniqueWithoutTopicInput[]
+    createMany?: CommentsCreateManyTopicInputEnvelope
+    set?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    disconnect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    delete?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    connect?: CommentsWhereUniqueInput | CommentsWhereUniqueInput[]
+    update?: CommentsUpdateWithWhereUniqueWithoutTopicInput | CommentsUpdateWithWhereUniqueWithoutTopicInput[]
+    updateMany?: CommentsUpdateManyWithWhereWithoutTopicInput | CommentsUpdateManyWithWhereWithoutTopicInput[]
+    deleteMany?: CommentsScalarWhereInput | CommentsScalarWhereInput[]
+  }
+
+  export type TopicCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<TopicCreateWithoutCommentsInput, TopicUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: TopicCreateOrConnectWithoutCommentsInput
+    connect?: TopicWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type TopicUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<TopicCreateWithoutCommentsInput, TopicUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: TopicCreateOrConnectWithoutCommentsInput
+    upsert?: TopicUpsertWithoutCommentsInput
+    connect?: TopicWhereUniqueInput
+    update?: XOR<XOR<TopicUpdateToOneWithWhereWithoutCommentsInput, TopicUpdateWithoutCommentsInput>, TopicUncheckedUpdateWithoutCommentsInput>
   }
 
   export type QuestionCreateNestedManyWithoutPollInput = {
@@ -4803,14 +7590,6 @@ export namespace Prisma {
     create?: XOR<PollCreateWithoutQuestionsInput, PollUncheckedCreateWithoutQuestionsInput>
     connectOrCreate?: PollCreateOrConnectWithoutQuestionsInput
     connect?: PollWhereUniqueInput
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type PollUpdateOneRequiredWithoutQuestionsNestedInput = {
@@ -4888,6 +7667,41 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -4945,6 +7759,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TopicCreateWithoutProfileInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentsCreateNestedManyWithoutTopicInput
+  }
+
+  export type TopicUncheckedCreateWithoutProfileInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    comments?: CommentsUncheckedCreateNestedManyWithoutTopicInput
+  }
+
+  export type TopicCreateOrConnectWithoutProfileInput = {
+    where: TopicWhereUniqueInput
+    create: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput>
+  }
+
+  export type TopicCreateManyProfileInputEnvelope = {
+    data: TopicCreateManyProfileInput | TopicCreateManyProfileInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PollUpsertWithWhereUniqueWithoutProfileInput = {
     where: PollWhereUniqueInput
     update: XOR<PollUpdateWithoutProfileInput, PollUncheckedUpdateWithoutProfileInput>
@@ -4972,6 +7818,210 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Poll"> | Date | string
     updatedAt?: DateTimeFilter<"Poll"> | Date | string
     createdBy?: StringFilter<"Poll"> | string
+  }
+
+  export type TopicUpsertWithWhereUniqueWithoutProfileInput = {
+    where: TopicWhereUniqueInput
+    update: XOR<TopicUpdateWithoutProfileInput, TopicUncheckedUpdateWithoutProfileInput>
+    create: XOR<TopicCreateWithoutProfileInput, TopicUncheckedCreateWithoutProfileInput>
+  }
+
+  export type TopicUpdateWithWhereUniqueWithoutProfileInput = {
+    where: TopicWhereUniqueInput
+    data: XOR<TopicUpdateWithoutProfileInput, TopicUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type TopicUpdateManyWithWhereWithoutProfileInput = {
+    where: TopicScalarWhereInput
+    data: XOR<TopicUpdateManyMutationInput, TopicUncheckedUpdateManyWithoutProfileInput>
+  }
+
+  export type TopicScalarWhereInput = {
+    AND?: TopicScalarWhereInput | TopicScalarWhereInput[]
+    OR?: TopicScalarWhereInput[]
+    NOT?: TopicScalarWhereInput | TopicScalarWhereInput[]
+    id?: StringFilter<"Topic"> | string
+    title?: StringFilter<"Topic"> | string
+    content?: JsonFilter<"Topic">
+    externalId?: StringFilter<"Topic"> | string
+    published?: BoolFilter<"Topic"> | boolean
+    createdAt?: DateTimeFilter<"Topic"> | Date | string
+    updatedAt?: DateTimeFilter<"Topic"> | Date | string
+    createdBy?: StringFilter<"Topic"> | string
+  }
+
+  export type CommentsCreateWithoutTopicInput = {
+    id?: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentsUncheckedCreateWithoutTopicInput = {
+    id?: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentsCreateOrConnectWithoutTopicInput = {
+    where: CommentsWhereUniqueInput
+    create: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput>
+  }
+
+  export type CommentsCreateManyTopicInputEnvelope = {
+    data: CommentsCreateManyTopicInput | CommentsCreateManyTopicInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProfileCreateWithoutTopicsInput = {
+    id?: string
+    userId: string
+    name: string
+    imageUrl: string
+    email: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    polls?: PollCreateNestedManyWithoutProfileInput
+  }
+
+  export type ProfileUncheckedCreateWithoutTopicsInput = {
+    id?: string
+    userId: string
+    name: string
+    imageUrl: string
+    email: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    polls?: PollUncheckedCreateNestedManyWithoutProfileInput
+  }
+
+  export type ProfileCreateOrConnectWithoutTopicsInput = {
+    where: ProfileWhereUniqueInput
+    create: XOR<ProfileCreateWithoutTopicsInput, ProfileUncheckedCreateWithoutTopicsInput>
+  }
+
+  export type CommentsUpsertWithWhereUniqueWithoutTopicInput = {
+    where: CommentsWhereUniqueInput
+    update: XOR<CommentsUpdateWithoutTopicInput, CommentsUncheckedUpdateWithoutTopicInput>
+    create: XOR<CommentsCreateWithoutTopicInput, CommentsUncheckedCreateWithoutTopicInput>
+  }
+
+  export type CommentsUpdateWithWhereUniqueWithoutTopicInput = {
+    where: CommentsWhereUniqueInput
+    data: XOR<CommentsUpdateWithoutTopicInput, CommentsUncheckedUpdateWithoutTopicInput>
+  }
+
+  export type CommentsUpdateManyWithWhereWithoutTopicInput = {
+    where: CommentsScalarWhereInput
+    data: XOR<CommentsUpdateManyMutationInput, CommentsUncheckedUpdateManyWithoutTopicInput>
+  }
+
+  export type CommentsScalarWhereInput = {
+    AND?: CommentsScalarWhereInput | CommentsScalarWhereInput[]
+    OR?: CommentsScalarWhereInput[]
+    NOT?: CommentsScalarWhereInput | CommentsScalarWhereInput[]
+    id?: StringFilter<"Comments"> | string
+    topicId?: StringFilter<"Comments"> | string
+    text?: StringFilter<"Comments"> | string
+    votes?: IntFilter<"Comments"> | number
+    createdAt?: DateTimeFilter<"Comments"> | Date | string
+    updatedAt?: DateTimeFilter<"Comments"> | Date | string
+  }
+
+  export type ProfileUpsertWithoutTopicsInput = {
+    update: XOR<ProfileUpdateWithoutTopicsInput, ProfileUncheckedUpdateWithoutTopicsInput>
+    create: XOR<ProfileCreateWithoutTopicsInput, ProfileUncheckedCreateWithoutTopicsInput>
+    where?: ProfileWhereInput
+  }
+
+  export type ProfileUpdateToOneWithWhereWithoutTopicsInput = {
+    where?: ProfileWhereInput
+    data: XOR<ProfileUpdateWithoutTopicsInput, ProfileUncheckedUpdateWithoutTopicsInput>
+  }
+
+  export type ProfileUpdateWithoutTopicsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    polls?: PollUpdateManyWithoutProfileNestedInput
+  }
+
+  export type ProfileUncheckedUpdateWithoutTopicsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    polls?: PollUncheckedUpdateManyWithoutProfileNestedInput
+  }
+
+  export type TopicCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    profile: ProfileCreateNestedOneWithoutTopicsInput
+  }
+
+  export type TopicUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy: string
+  }
+
+  export type TopicCreateOrConnectWithoutCommentsInput = {
+    where: TopicWhereUniqueInput
+    create: XOR<TopicCreateWithoutCommentsInput, TopicUncheckedCreateWithoutCommentsInput>
+  }
+
+  export type TopicUpsertWithoutCommentsInput = {
+    update: XOR<TopicUpdateWithoutCommentsInput, TopicUncheckedUpdateWithoutCommentsInput>
+    create: XOR<TopicCreateWithoutCommentsInput, TopicUncheckedCreateWithoutCommentsInput>
+    where?: TopicWhereInput
+  }
+
+  export type TopicUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: TopicWhereInput
+    data: XOR<TopicUpdateWithoutCommentsInput, TopicUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type TopicUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUpdateOneRequiredWithoutTopicsNestedInput
+  }
+
+  export type TopicUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: StringFieldUpdateOperationsInput | string
   }
 
   export type QuestionCreateWithoutPollInput = {
@@ -5008,6 +8058,7 @@ export namespace Prisma {
     email: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    topics?: TopicCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateWithoutPollsInput = {
@@ -5018,6 +8069,7 @@ export namespace Prisma {
     email: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    topics?: TopicUncheckedCreateNestedManyWithoutProfileInput
   }
 
   export type ProfileCreateOrConnectWithoutPollsInput = {
@@ -5072,6 +8124,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    topics?: TopicUpdateManyWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateWithoutPollsInput = {
@@ -5082,6 +8135,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    topics?: TopicUncheckedUpdateManyWithoutProfileNestedInput
   }
 
   export type PollCreateWithoutQuestionsInput = {
@@ -5149,6 +8203,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type TopicCreateManyProfileInput = {
+    id?: string
+    title: string
+    content: JsonNullValueInput | InputJsonValue
+    externalId: string
+    published: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type PollUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -5174,6 +8238,70 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     inviteCode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TopicUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentsUpdateManyWithoutTopicNestedInput
+  }
+
+  export type TopicUncheckedUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentsUncheckedUpdateManyWithoutTopicNestedInput
+  }
+
+  export type TopicUncheckedUpdateManyWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    externalId?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentsCreateManyTopicInput = {
+    id?: string
+    text: string
+    votes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CommentsUpdateWithoutTopicInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentsUncheckedUpdateWithoutTopicInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommentsUncheckedUpdateManyWithoutTopicInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    votes?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5220,6 +8348,10 @@ export namespace Prisma {
      */
     export type ProfileCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ProfileCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use TopicCountOutputTypeDefaultArgs instead
+     */
+    export type TopicCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = TopicCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use PollCountOutputTypeDefaultArgs instead
      */
     export type PollCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PollCountOutputTypeDefaultArgs<ExtArgs>
@@ -5227,6 +8359,14 @@ export namespace Prisma {
      * @deprecated Use ProfileDefaultArgs instead
      */
     export type ProfileArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ProfileDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TopicDefaultArgs instead
+     */
+    export type TopicArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = TopicDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CommentsDefaultArgs instead
+     */
+    export type CommentsArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = CommentsDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PollDefaultArgs instead
      */
