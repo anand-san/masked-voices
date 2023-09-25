@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import axios from "axios";
 import {
   FormField,
   FormItem,
@@ -14,7 +13,10 @@ import {
   FormMessage,
   Form,
 } from "@/components/ui/form";
-import { DialogFooter } from "@/components/ui/dialog";
+import useWebSocket, { ReadyState } from "react-use-websocket";
+import { useUser } from "@clerk/nextjs";
+
+const WS_URL = "ws://127.0.0.1:3112";
 
 const formSchema = z.object({
   comment: z.string().min(2, {
@@ -24,6 +26,33 @@ const formSchema = z.object({
 
 export default function EditorComments() {
   const [isMounted, setIsMounted] = useState(false);
+  const [messageHistory, setMessageHistory] = useState<MessageEvent<any>[]>([]);
+  const { user } = useUser();
+  const filteredUser = useMemo(
+    () => ({
+      fullName: user?.fullName,
+      profileUrl: user?.imageUrl,
+    }),
+    [user]
+  );
+  const { lastJsonMessage, sendJsonMessage, readyState } = useWebSocket(WS_URL);
+
+  useEffect(() => {
+    if (lastJsonMessage !== null) {
+      // setMessageHistory((prev) => prev.concat(lastMessage));
+      // setMessageHistory([...messageHistory, lastMessage.data]);
+    }
+  }, [lastJsonMessage, setMessageHistory, messageHistory]);
+
+  useEffect(() => {
+    if (filteredUser.fullName && readyState === ReadyState.OPEN) {
+      sendJsonMessage({
+        user: filteredUser,
+        message: "Connected",
+        dateTime: Date().toLocaleUpperCase(),
+      });
+    }
+  }, [filteredUser, sendJsonMessage, readyState]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -38,8 +67,11 @@ export default function EditorComments() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post("/api/comment", values);
-      form.reset();
+      sendJsonMessage({
+        user: filteredUser,
+        message: values.comment,
+        dateTime: Date().toLocaleUpperCase(),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -86,6 +118,15 @@ export default function EditorComments() {
         </form>
       </Form>
       <hr className="w-full mt-8" />
+
+      {lastJsonMessage ? (
+        <span>Last message: {JSON.stringify(lastJsonMessage)}</span>
+      ) : null}
+      {/* <ul>
+        {messageHistory.map((message, idx) => (
+          <span key={idx}>{message ? message.data : null}</span>
+        ))}
+      </ul> */}
     </div>
   );
 }

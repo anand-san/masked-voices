@@ -4,7 +4,7 @@ import { Editor } from "novel";
 import EditorComments from "@/components/comments";
 import { defaultEditorContent } from "./default-content";
 
-export default function SetupApge() {
+export default function EditorPage() {
   const editable = () => true;
 
   return (
