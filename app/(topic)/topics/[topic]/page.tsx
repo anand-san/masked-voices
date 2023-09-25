@@ -4,9 +4,18 @@ import { Editor } from "novel";
 import EditorComments from "@/components/comments";
 import { defaultEditorContent } from "./default-content";
 
-export default function EditorPage() {
-  const editable = () => true;
+interface TopicParams {
+  topic: string;
+}
 
+interface TopicProps {
+  params: TopicParams;
+}
+
+export default function Topic({ params }: TopicProps) {
+  console.log({ topic: params.topic });
+
+  const editable = () => true;
   return (
     <div className="flex mt-6 flex-col items-center justify-start">
       <Editor
