@@ -1,8 +1,9 @@
 import { UserButton, auth } from "@clerk/nextjs";
 import { ModeToggle } from "@/components/theme-mode-toggle";
 import Link from "next/link";
-import { GithubIcon, User2Icon } from "lucide-react";
+import { GithubIcon, User2Icon, PlusSquare } from "lucide-react";
 import { Button } from "./ui/button";
+import { QuickCreate } from "@/components/ui/modals/create-poll";
 
 export const MenuBar = () => {
   const { userId } = auth();
@@ -19,24 +20,23 @@ export const MenuBar = () => {
               Overview
             </Link>
             {userId && (
-              <Link
-                href="/create-topic"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Create
-              </Link>
+              <>
+                <Link
+                  href="/editor"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Editor
+                </Link>
+              </>
             )}
           </nav>
           <div className="ml-auto flex items-center space-x-4">
-            {!userId ? (
+            <QuickCreate>
               <Button variant="outline" size="icon">
-                <Link href="/login">
-                  <User2Icon className="h-4 w-4" />
-                </Link>
+                <PlusSquare className="h-4 w-4" />
               </Button>
-            ) : (
-              <UserButton afterSignOutUrl="/" />
-            )}
+            </QuickCreate>
+
             <Button variant="outline" size="icon">
               <Link
                 href="https://github.com/seanjin17/masked-voices"
@@ -46,6 +46,15 @@ export const MenuBar = () => {
               </Link>
             </Button>
             <ModeToggle />
+            {!userId ? (
+              <Button variant="outline" size="icon">
+                <Link href="/login">
+                  <User2Icon className="h-4 w-4" />
+                </Link>
+              </Button>
+            ) : (
+              <UserButton afterSignOutUrl="/" />
+            )}
           </div>
         </div>
       </div>

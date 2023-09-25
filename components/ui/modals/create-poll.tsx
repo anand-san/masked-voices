@@ -6,6 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -21,7 +22,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../input";
 import { Button } from "../button";
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { FileUpload } from "../file-upload";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -35,7 +36,7 @@ const formSchema = z.object({
   imageUrl: z.string(),
 });
 
-export const CreateTopicDialog = () => {
+export const QuickCreate = ({ children }: { children: React.ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
@@ -69,8 +70,9 @@ export const CreateTopicDialog = () => {
   }
   return (
     <div>
-      <Dialog open>
-        <DialogContent className="bg-white text-black p-0 overflow-hidden">
+      <Dialog>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+        <DialogContent className="text-black p-0 overflow-hidden">
           <DialogHeader className="pt-8 px-6">
             <DialogTitle className="text-center text-2xl font-bold">
               Create A Topic
